@@ -16,24 +16,30 @@ galaxy-wait -g $galaxy_instance
 su - $GALAXY_USER
 
 # install other tutorial materials
-for dir in /tutorials/*
+for tutdir in $topicdir/tutorials/*
 do
-    echo "Installing tutorial: $dir"
-
-    # install tools
-    if [ -f $dir/tools.yaml ]
+    tut=$(basename $tutdir)
+    echo "Installing tutorial: $tut"
+    # install tools and workflows
+    if [ -d $tutdir/workflows/ ];
     then
-        echo " - Installing tools"
-        shed-tools install -t $dir/tools.yaml -g $galaxy_instance -u $GALAXY_DEFAULT_ADMIN_USER -p $GALAXY_DEFAULT_ADMIN_PASSWORD
-    else
-        echo " - No tools to install (no file named tools.yaml present)"
-    fi
-
-    # install workflows
-    if [ -d $dir/workflows/ ];
-    then
+        echo " - Extracting tools from workflows"
+        for w in $tutdir/workflows/*.ga
+        do
+            workflow-to-tools -w $w -o $tutdir/workflows/wftools.yaml -l $tut
+            echo " - Installing tools from workflow $(basename $w)" 
+            n=0
+            until [ $n -ge 3 ]
+            do
+                shed-tools install -t $tutdir/workflows/wftools.yaml -g $galaxy_instance -u $GALAXY_DEFAULT_ADMIN_USER -p $GALAXY_DEFAULT_ADMIN_PASSWORD -v && break
+                n=$[$n+1]
+                sleep 5
+                echo " - Retrying shed-tools install "
+            done        
+            rm $tutdir/workflows/wftools.yaml          
+        done
         echo " - Installing workflows"
-        workflow-install --publish_workflows --workflow_path $dir/workflows/ -g $galaxy_instance -u $GALAXY_DEFAULT_ADMIN_USER -p $GALAXY_DEFAULT_ADMIN_PASSWORD
+        workflow-install --publish_workflows --workflow_path $tutdir/workflows/ -g $galaxy_instance -u $GALAXY_DEFAULT_ADMIN_USER -p $GALAXY_DEFAULT_ADMIN_PASSWORD
     else
         echo " - No workflows to install (no directory named workflows present)"
     fi
@@ -49,15 +55,12 @@ do
     #fi
 
     # install tours
-    dir_name="$(dirname $dir)"
-    dir_name="$(basename $dir_name)"
-    if [ -d $dir/tours/ ];
+    if [ -d $tutdir/tours/ ];
     then
         echo " - Installing tours"
-        for t in $dir/tours/*
+        for t in $tutdir/tours/*
         do
-            # prefix tour file name with tutorial name to avoid clashes
-            fname=$dir_name-$(basename $t)
+            fname=$tut-$(basename $t)
             echo "   - Installing tour: $t as $fname"
             cp $t $GALAXY_ROOT/config/plugins/tours/$fname
         done
@@ -65,11 +68,8 @@ do
         echo " - No tours to install (no directory named tours present)"
     fi
 
-    echo "Finished installation of $dir tutorial \n"
+    echo "Finished installation of $tut tutorial \n"
 done
 
 cd /tutorials/
 python /mergeyaml.py > ./data-library_all.yaml
-setup-data-libraries -i ./data-library_all.yaml -g $galaxy_instance -u $GALAXY_DEFAULT_ADMIN_USER -p $GALAXY_DEFAULT_ADMIN_PASSWORD -v
-
-

@@ -1,6 +1,7 @@
 ---
 name: "introduction"
 type: "use"
+<<<<<<< HEAD
 title: "Introduction to Galaxy and Apollo"
 summary: "Galaxy is a scientific workflow, data integration, and data and analysis persistence and publishing platform that aims to make computational biology accessible to research scientists that do not have computer programming experience. Apollo is a web based GUI for genome annotation based on jBrowse. "
 
@@ -125,8 +126,23 @@ material:
       - meiliucpt
 
 
+=======
+title: "Introduction to Galaxy Analyses"
+summary: "Galaxy is a scientific workflow, data integration, and data and analysis persistence and publishing platform that aims to make computational biology accessible to research scientists that do not have computer programming experience. "
+docker_image: "quay.io/galaxy/introduction-training"
+
+requirements:
+
+>>>>>>> 74c0b26e64bb0bae8c67c74ed64fa9d5cd76842d
 maintainers:
   - jennaj
   - tnabtaf
 
-references:
+
+subtopics:
+  - id: core
+    title: "Core"
+    description: "These are the core, foundational topics for learning how to use Galaxy."
+  - id: r
+    title: "R"
+    description: "These lessons focus on coding in R, using Galaxy analysis outputs as their basis."
