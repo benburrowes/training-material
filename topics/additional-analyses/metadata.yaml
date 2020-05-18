@@ -155,6 +155,23 @@ material:
     contributors:
       - jrr-cpt
       - ltmaddox
+-
+    title: "Genome and Protein Data Visualization"
+    type: "tutorial"
+    name: "data-visualization"
+    zenodo_link: ""
+    galaxy-tour: no
+    hands_on: yes
+    slides: no
+    workflows: no
+    tags:
+    questions:
+    objectives:
+    time_estimation: "1h/1d"
+    key_points:
+    contributors:
+      - jrr-cpt
+      - ltmaddox
 
 
 maintainers:
