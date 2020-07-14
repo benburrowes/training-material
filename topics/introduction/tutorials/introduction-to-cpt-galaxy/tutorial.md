@@ -19,21 +19,33 @@ The Galaxy interface consists of three panels; on the left (boxed in blue) is a 
 > ### Agenda
 >
 > In this tutorial, the following Galaxy characteristics will be reviewed:
->
-> 1. Tools
+> 
+> 1. First-time users
+>    > * Registering an account in Galaxy and Apollo
+> 2. Tools
 >    > * Uploading Data
 >    > * Choosing and Executing a Tool
-> 2. Histories
+> 3. Histories
 >    > * The Current History
 >    > * History Information
 >    > * Datasets
 >    > * Managing Datasets Individually
 >    > * Switching Histories
-> 3. Workflows
+> 4. Workflows
 >    > * Importing a Workflow
 >    > * Running a Workflow
 >
 {: .agenda}
+
+# First-time users
+
+Navigate to the CPT Phage Galaxy instance. TAMU users will create an account linked to their NetID at [https://cpt.tamu.edu/galaxy](https://cpt.tamu.edu/galaxy). All other users can create a free account at [https://cpt.tamu.edu/galaxy-pub](https://cpt.tamu.edu/galaxy-pub). The first time a user accesses the portal, an account should be registered at the 'Login or Register' menu item by going to 'Register'. After entering your new account information, you should receive a confirmation message. 
+
+Before proceeding, it is VERY important to create your linked Apollo account. Do this by clicking the CPT Apollo logo on the main page of CPT Galaxy. An account will be automatically generated the first time you do this. You will see an Error message that states you do not access to any organisms, but it does create your account. Your Apollo account must be created by this method before you can successfully run the structural workflow, or generate an organism for annotation work. 
+
+> ### {% icon tip %} Pro tip...
+> Be sure to follow the above steps to generate your linked Apollo account before proceeding. 
+{: .tip}
 
 # Tools
 
