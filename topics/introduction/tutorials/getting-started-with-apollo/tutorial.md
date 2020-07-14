@@ -13,6 +13,8 @@ The Center for Phage Technology Galaxy program is an instance of the Galaxy Proj
 >
 > In this tutorial, you will find:
 >
+> * First-time users
+>    > * Generating an account with CPT Apollo
 > * Background Information
 >    > * History of Genome Browsers
 >    >    > 1. GBrowse
@@ -23,6 +25,17 @@ The Center for Phage Technology Galaxy program is an instance of the Galaxy Proj
 >    > * The Galaxy-Apollo Bridge 
 >    > * Navigating Through Apollo
 {: .agenda}
+
+# First-time users
+
+To use the CPT Apollo instance, you will need a CPT Phage Galaxy account. TAMU users will create an account linked to their NetID at [https://cpt.tamu.edu/galaxy](https://cpt.tamu.edu/galaxy). All other users can create a free account at [https://cpt.tamu.edu/galaxy-pub](https://cpt.tamu.edu/galaxy-pub). The first time a user accesses the portal, an account should be registered at the 'Login or Register' menu item by going to 'Register'. After entering your new account information, you should receive a confirmation message. 
+
+After registering a CPT Phage Galaxy account, create your linked Apollo account. Do this by clicking the CPT Apollo logo on the main page of CPT Galaxy. An account will be automatically generated the first time you do this. You will see an Error message that states you do not access to any organisms, but it does create your account. Your Apollo account must be created by this method before you can successfully run the structural workflow, or generate an organism for annotation work. 
+
+> ### {% icon tip %} Pro tip...
+> Be sure to follow the above steps to generate your linked Apollo account before proceeding. 
+{: .tip}
+
 
 # Background Information
 
